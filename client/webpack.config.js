@@ -7,8 +7,11 @@ module.exports = () => {
   return {
     mode: "development",
     entry: {
-      main: "./src/js/index.js",
+      database: "./src/js/database.js",
+      editor: "./src/js/editor.js",
+      header: "./src/js/header.js",
       install: "./src/js/install.js",
+      main: "./src/js/index.js",
     },
     output: {
       filename: "[name].bundle.js",
@@ -18,7 +21,7 @@ module.exports = () => {
       // Webpack plugin that generates our html file and injects our bundles.
       new HtmlWebpackPlugin({
         template: "./index.html",
-        title: "Text Editor",
+        title: "JATE",
       }),
 
       // Injects our custom service worker
@@ -31,13 +34,14 @@ module.exports = () => {
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
-        name: "Text Editor",
-        short_name: "Editor",
-        description: "Text editor that runs in the browser.",
+        name: "Just Another Text Editor",
+        short_name: "J.A.T.E",
+        description: "Takes notes with JavaScript syntax highlighting!",
         background_color: "#225ca3",
         theme_color: "#225ca3",
-        start_url: "./",
-        publicPath: "./",
+        scope: ".",
+        start_url: "/",
+        publicPath: "/",
         icons: [
           {
             src: path.resolve("src/images/logo.png"),
